@@ -27,12 +27,22 @@ namespace Escola_Condução
         }
         public static void Consulta()
         {
-            Console.WriteLine($"Lista aluno/s registado/s: ");
-            foreach (Aluno novo in Alunos)
+            Console.WriteLine("1- Consulta singular \n2- Consulta total: ");
+            int selecao = int.Parse(Console.ReadLine());
+            if (selecao == 1)
             {
-                Console.WriteLine(novo.ToString());
+                Aluno.MostrarSingular();
             }
-            Program.MenuInicial();
+            else if (selecao == 2)
+            {
+                Aluno.MostrarTodos();
+            }
+            else
+            {
+                Console.WriteLine("Numero incorrecto.Tente outra vez");
+                Aluno.Consulta();
+            }
+           
         }
         public static void Apagar()
         {
@@ -44,7 +54,14 @@ namespace Escola_Condução
                 if ( nifApagar == novo.Nif)
                 {
                     Alunos.Remove(novo);
+                    Aluno.MostrarTodos();
                 }
+                else
+                {
+                    Console.WriteLine("Numero incorrecto.Tente outra vez");
+                    Aluno.Apagar();
+                }
+                
             }
             Program.MenuInicial();
         }
@@ -52,6 +69,31 @@ namespace Escola_Condução
         {
             return $"Nome: {Nome}, Morada: {Morada}, Nif: {Nif}, Idade: {Idade}" ;
         }
-       
+       virtual public void Mostrar()
+        {
+            Console.WriteLine(ToString());
+        }
+        public static void MostrarSingular()
+        {
+            Console.WriteLine("Digite Nif"); int nifMostrar = int.Parse(Console.ReadLine()) ;
+            
+            foreach (Aluno novo in Alunos)
+            {
+                if (nifMostrar == novo.Nif)
+                {
+                    Console.WriteLine($"Aluno: {novo}");
+                }
+            }
+            Program.MenuInicial();
+        }
+        public static void MostrarTodos()
+        {
+            Console.WriteLine($"Lista aluno/s registado/s: ");
+            foreach (Aluno novo in Alunos)
+            {
+                Console.WriteLine(novo.ToString());
+            }
+            Program.MenuInicial();
+        }
     }
 }

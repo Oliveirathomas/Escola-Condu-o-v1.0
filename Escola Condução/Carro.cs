@@ -15,5 +15,6 @@ namespace Escola_Condução
             Console.WriteLine("Categoria B permite condução veiculos 4 rodas etc..");
             Program.MenuInicial();
         }
+
     }
 }

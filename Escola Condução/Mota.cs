@@ -25,6 +25,7 @@ namespace Escola_Condução
                     if (nova.SideCar == true)
                     {
                         Console.WriteLine("Categoria A com sidecar");
+                        
                     }
                     else
                     {
@@ -37,6 +38,8 @@ namespace Escola_Condução
                     break;
             }
 
-        }
+         }
+        
     }
 }
+
